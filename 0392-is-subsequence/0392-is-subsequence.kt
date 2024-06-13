@@ -5,13 +5,13 @@ class Solution {
         val sLength = s.length
         var c = 0
         val result = StringBuilder()
-        for(v in t) {
+        loop@ for(v in t) {
             if( v == s[c] ) {
                 result.append(v)
                 c++
             }
             if( c == sLength)
-                return result.toString() == s
+                break@loop
         }
         return result.toString() == s
     }
