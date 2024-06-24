@@ -15,7 +15,6 @@ class Solution {
                 if(avgTemp > avg)
                     avg = avgTemp
             }
-            
         }
         return avg
     }
