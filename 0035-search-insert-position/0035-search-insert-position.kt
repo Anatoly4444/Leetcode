@@ -6,18 +6,18 @@ class Solution {
                 return nums.size
             if(target < nums.first())
                 return 0
-            var targetTemp1 = target
-            while(targetTemp1 > nums.first()) {
-                targetTemp1--
-                val prevIndex = nums.indexOf(targetTemp1)
+            var targetTemp = target
+            while(targetTemp > nums.first()) {
+                targetTemp--
+                val prevIndex = nums.indexOf(targetTemp)
                 if(prevIndex != -1) {
                     return prevIndex + 1
                 }
             }
-            var targetTemp2 = target
-            while(targetTemp2 < nums.last()) {
-                targetTemp2++
-                val nextIndex = nums.indexOf(targetTemp2)
+            targetTemp = target
+            while(targetTemp < nums.last()) {
+                targetTemp++
+                val nextIndex = nums.indexOf(targetTemp)
                 if(nextIndex != -1) {
                     return nextIndex - 1
                 }
