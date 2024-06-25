@@ -14,9 +14,7 @@ class Solution {
                     list.addFirst(i1)
                     incrNext = false
                 }
-            } else {
-                list.addFirst(digits[i])
-            }
+            } else list.addFirst(digits[i])
         }
         return list.toIntArray()
     }
