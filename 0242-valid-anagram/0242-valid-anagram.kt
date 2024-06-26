@@ -8,10 +8,6 @@ class Solution {
             map.compute(s[i]) { _,v -> if(v == null) 1 else v + 1}
             map2.compute(t[i]) { _,v -> if(v == null) 1 else v + 1}
         }
-        for(i in map) {
-            if(i.value != map2.get(i.key))
-                return false
-        }
-        return true
+        return map == map2
     }
 }
