@@ -1,14 +1,16 @@
 class Solution {
     fun sumZero(n: Int): IntArray {
-        var list = mutableListOf<Int>()
+        var list = IntArray(n)
+        var counter = 0
         val x: Int = if(n % 2 == 0) {n / 2} else {
-            list.add(0)
+            list[counter] = 0
+            counter++
             (n - 1) / 2
         }
         for(i in 1..x) {
-            list.add(i)
-            list.add(i * -1)   
+            list[counter++] = i
+            list[counter++] = i * -1
         }
-        return list.toIntArray()
+        return list
     }
 }
