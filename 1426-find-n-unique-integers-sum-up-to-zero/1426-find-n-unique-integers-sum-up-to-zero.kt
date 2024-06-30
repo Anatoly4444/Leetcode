@@ -7,7 +7,7 @@ class Solution {
         }
         for(i in 0..< x) {
             while(true) {
-                val k = (1..1000).random()
+                val k = (1..10000).random()
                 if(!list.contains(k)) {
                     list.add(k)
                     list.add(k * -1)
