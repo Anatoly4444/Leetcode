@@ -1,4 +1,5 @@
 class Solution {
+    // function indexOf() can solve that
     fun strStr(haystack: String, needle: String): Int {
         if(!haystack.contains(needle))
             return -1
