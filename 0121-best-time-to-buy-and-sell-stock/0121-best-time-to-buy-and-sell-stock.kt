@@ -1,19 +1,14 @@
 class Solution {
     fun maxProfit(prices: IntArray): Int {
-        var result = 0
-        var buyDay = 0
-        for(x in 0..< prices.lastIndex) {
-            buyDay = if(x == 0)
-                prices[x]
-            else {
-                if(prices[x] < buyDay) prices[x] else continue
+        var profit = 0
+        var minPriceIndex = 0
+        for(j in 1..prices.lastIndex) {
+            if(prices[j] < prices[minPriceIndex]) {
+                minPriceIndex = j
+                continue
             }
-            for(e in x + 1..prices.lastIndex) {
-                val sellDay = prices[e]
-                val profit = sellDay - buyDay
-                result = if(profit > result) profit else result
-            }
+            profit = max(profit, prices[j] - prices[minPriceIndex])
         }
-        return result
+        return profit
     }
 }
