@@ -12,15 +12,15 @@ class Solution {
             if(counter > 2)
                 nums[i] = Int.MAX_VALUE
         }
-        var counter2 = 0
+        var shiftCounter = 0
         for(i in nums.indices.reversed()) {
             if(nums[i] == Int.MAX_VALUE) {
                 for(j in i..< nums.lastIndex) {
                     nums[j] = nums[j + 1]
                 }
-                counter2++
+                shiftCounter++
             }
         }
-        return nums.size - counter2
+        return nums.size - shiftCounter
     }
 }
