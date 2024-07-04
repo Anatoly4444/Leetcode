@@ -10,8 +10,8 @@
 class Solution {
     val set = mutableSetOf<Int>()
     fun deleteDuplicates(head: ListNode?): ListNode? {
-        var element = head
         val zero = ListNode(0)
+        var element = head
         var node = zero
         while(element != null) {
             val added = set.add(element.`val`)
@@ -19,8 +19,7 @@ class Solution {
                 node.next = element
                 node = element
             } else {
-                if(element.next == null)
-                    node.next = null
+                if(element.next == null) node.next = null
             }
             element = element.next
         }
