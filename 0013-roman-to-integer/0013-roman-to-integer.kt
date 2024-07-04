@@ -9,6 +9,14 @@ fun romanToInt(s: String): Int {
         'D' to 500,
         'M' to 1000
     )
+    val map2 = mapOf(
+        "IV" to 4,
+        "IX" to 9,
+        "XL" to 40,
+        "XC" to 90,
+        "CD" to 400,
+        "CM" to 900,
+    )
     val arr = s.toCharArray()
     var sum = 0
     var skipNext = false
@@ -20,22 +28,12 @@ fun romanToInt(s: String): Int {
         val i1 = arr[x]
         if(x != arr.lastIndex) {
             val i2 = arr[x + 1]
-            when {
-                i1 == 'I' && (i2 == 'V' || i2 == 'X') ->  {
-                    sum += map[i2]!! - 1
-                    skipNext = true
-                }
-                i1 == 'X' && (i2 == 'L' || i2 == 'C') -> {
-                    sum += map[i2]!! - 10
-                    skipNext = true
-                }
-                i1 == 'C' && (i2 == 'D' || i2 == 'M') -> {
-                    sum += map[i2]!! - 100
-                    skipNext = true
-                }
-                else -> {
-                    sum += map[i1]!!
-                }
+            val key = String(charArrayOf(i1, i2))
+            if(map2.contains(key)) {
+                sum += map2[key]!!
+                skipNext = true
+            } else {
+                sum += map[i1]!!
             }
         } else {
             sum += map[i1]!!
