@@ -26,8 +26,9 @@ fun romanToInt(s: String): Int {
             continue
         }
         val i1 = arr[x]
-        if(x != arr.lastIndex) {
+        if((i1 == 'I' || i1 == 'X' || i1 == 'C') && x != arr.lastIndex) {
             val i2 = arr[x + 1]
+           
             val key = String(charArrayOf(i1, i2))
             if(map2.contains(key)) {
                 sum += map2[key]!!
@@ -35,6 +36,7 @@ fun romanToInt(s: String): Int {
             } else {
                 sum += map[i1]!!
             }
+            
         } else {
             sum += map[i1]!!
         }
