@@ -22,15 +22,15 @@ fun romanToInt(s: String): Int {
         if(x != arr.lastIndex) {
             val i2 = arr[x + 1]
             when {
-                i1 == 'I' && i2 == 'V' ->  { 
-                    sum += 4 
-                    skipNext = true 
+                i1 == 'I' && i2 == 'V' ->  {
+                    sum += 4
+                    skipNext = true
                 }
-                i1 == 'I' && i2 == 'X' -> { 
+                i1 == 'I' && i2 == 'X' -> {
                     sum += 9
                     skipNext = true
                 }
-                i1 == 'X' && i2 == 'L' -> { 
+                i1 == 'X' && i2 == 'L' -> {
                     sum += 40
                     skipNext = true
                 }
@@ -47,6 +47,7 @@ fun romanToInt(s: String): Int {
                     skipNext = true
                 }
                 else -> sum += map[i1]!!
+                
             }
         } else {
             sum += map[i1]!!
