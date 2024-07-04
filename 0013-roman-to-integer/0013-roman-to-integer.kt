@@ -19,26 +19,22 @@ fun romanToInt(s: String): Int {
     )
     val arr = s.toCharArray()
     var sum = 0
-    var skipNext = false
-    for(x in arr.indices) {
-        if(skipNext) {
-            skipNext = false
-            continue
-        }
-        val i1 = arr[x]
-        if((i1 == 'I' || i1 == 'X' || i1 == 'C') && x != arr.lastIndex) {
-            val i2 = arr[x + 1]
-           
+    var index = 0
+    while(index < arr.size) {
+        val i1 = arr[index]
+        if((i1 == 'I' || i1 == 'X' || i1 == 'C') && index != arr.lastIndex) {
+            val i2 = arr[index + 1]
             val key = String(charArrayOf(i1, i2))
             if(map2.contains(key)) {
                 sum += map2[key]!!
-                skipNext = true
+                index = index.inc().inc()
             } else {
                 sum += map[i1]!!
+                index = index.inc()
             }
-            
         } else {
             sum += map[i1]!!
+            index = index.inc()
         }
     }
     return sum
