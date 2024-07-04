@@ -17,13 +17,12 @@ fun romanToInt(s: String): Int {
         "CD" to 400,
         "CM" to 900,
     )
-    val arr = s.toCharArray()
     var sum = 0
     var index = 0
-    while(index < arr.size) {
-        val i1 = arr[index]
-        if((i1 == 'I' || i1 == 'X' || i1 == 'C') && index != arr.lastIndex) {
-            val i2 = arr[index + 1]
+    while(index < s.length) {
+        val i1 = s[index]
+        if((i1 == 'I' || i1 == 'X' || i1 == 'C') && index != s.lastIndex) {
+            val i2 = s[index + 1]
             val key = String(charArrayOf(i1, i2))
             if(map2.contains(key)) {
                 sum += map2[key]!!
