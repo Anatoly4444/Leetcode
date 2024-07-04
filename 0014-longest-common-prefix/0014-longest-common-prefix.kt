@@ -3,15 +3,15 @@ class Solution {
         val minLength = strs.minOf { it.length }
         if(minLength == 0)
             return ""
-        val list = ArrayList<Char>(minLength)
+        val builder  = StringBuilder()
         for(i in 0..< minLength) {
             val e1 = strs.get(0).get(i)
             val allMatch = strs.asSequence().all { it.get(i) == e1 }
             if(allMatch)
-                list.add(e1)
+                builder.append(e1)
             else
                 break
         }
-        return list.joinToString("")
+        return builder.toString()
     }
 }
