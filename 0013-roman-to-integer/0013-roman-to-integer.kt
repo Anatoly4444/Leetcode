@@ -10,7 +10,6 @@ fun romanToInt(s: String): Int {
         'M' to 1000
     )
     val arr = s.toCharArray()
-    val iter = arr.iterator()
     var sum = 0
     var skipNext = false
     for(x in arr.indices) {
@@ -22,32 +21,21 @@ fun romanToInt(s: String): Int {
         if(x != arr.lastIndex) {
             val i2 = arr[x + 1]
             when {
-                i1 == 'I' && i2 == 'V' ->  {
-                    sum += 4
+                i1 == 'I' && (i2 == 'V' || i2 == 'X') ->  {
+                    sum += map[i2]!! - 1
                     skipNext = true
                 }
-                i1 == 'I' && i2 == 'X' -> {
-                    sum += 9
+                i1 == 'X' && (i2 == 'L' || i2 == 'C') -> {
+                    sum += map[i2]!! - 10
                     skipNext = true
                 }
-                i1 == 'X' && i2 == 'L' -> {
-                    sum += 40
+                i1 == 'C' && (i2 == 'D' || i2 == 'M') -> {
+                    sum += map[i2]!! - 100
                     skipNext = true
                 }
-                i1 == 'X' && i2 == 'C' -> {
-                    sum += 90
-                    skipNext = true
+                else -> {
+                    sum += map[i1]!!
                 }
-                i1 == 'C' && i2 == 'D' -> {
-                    sum += 400
-                    skipNext = true
-                }
-                i1 == 'C' && i2 == 'M' -> {
-                    sum += 900
-                    skipNext = true
-                }
-                else -> sum += map[i1]!!
-                
             }
         } else {
             sum += map[i1]!!
